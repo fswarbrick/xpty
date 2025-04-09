@@ -1,7 +1,5 @@
-#ifdef __MVS__
 #define _XOPEN_SOURCE 600
 #define _OPEN_SYS_FILE_EXT 1
-#endif
 
 #include <fcntl.h>
 #include <features.h>
@@ -10,6 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef __MVS__
 void zos_convert_query(int fd) {
     struct f_cnvrt cvtreq = {QUERYCVT, 0, 0};
     if (fcntl(fd, F_CONTROL_CVT, &cvtreq) < 0) {
@@ -28,10 +27,10 @@ void zos_convert_set(int fd) {
         exit(1);
     }
 }
+#endif
 
 void open_pty_tty(int* master, int* slave) {
     char* slave_name;
-    int rc;
 
     *master = posix_openpt(O_RDWR | O_NOCTTY);
     if (*master == -1) {
