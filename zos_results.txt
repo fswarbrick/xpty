@@ -1,0 +1,19 @@
+MVS
+master
+Terminal /dev/ptyp0008 3 819 0 
+Terminal /dev/ptyp0008 3 819 1047 
+slave
+Terminal /dev/ttyp0008 4 819 0 
+Terminal /dev/ttyp0008 4 819 1047 
+Pty write bytes 7: 01293
+
+30 31 32 39 8 33 a 
+--------------------------------
+Pty read result: 5: 0123
+
+30 31 32 33 a 
+--------------------------------
+Tty read result: 9: 0129 3
+
+30 31 32 39 8 20 8 33 a 
+--------------------------------
